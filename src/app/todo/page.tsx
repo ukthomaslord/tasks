@@ -1,4 +1,5 @@
 import TodoItem from "@/components/todoitem";
+import { AddTodoButton } from "@/components/addtodobutton";
 import { prisma } from "@/db";
 import Link from "next/link";
 
@@ -22,9 +23,7 @@ export default async function Todo() {
           <TodoItem key={todo.id} {...todo} toggleTodo={toggleTodo} />
         ))}
       </ul>
-      <button className="w-full outline text-center back hover:bg-gray-100 py-4">
-        <h1 className="">Add todo</h1>
-      </button>
+      <AddTodoButton />
     </div>
   );
 }
