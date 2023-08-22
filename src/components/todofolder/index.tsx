@@ -44,30 +44,38 @@ const TodoForm: React.FC<ModalProps> = ({ modal }) => {
             To: "opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95" */}
 
           <div className="relative transform overflow-hidden rounded-lg bg-white text-left shadow-xl transition-all sm:my-8 sm:w-full sm:max-w-lg">
-            <div className="bg-white px-4 pb-4 pt-5 sm:p-6 sm:pb-4">
-              <header className="flex justify-between mb-4 items-center">
-                <h1 text-2x1>New</h1>
-              </header>
-              <form className="Flex gap-2 flex-col">
-                <input
-                  type="text"
-                  name="title"
-                  className="border border-slate-300 bg-transparent rounded px-2 py-1 outline-none focus-within:border-slate-100"
-                />
-                <div className="flex gap-1 justify-end">
-                  <Link
-                    href=".."
-                    className="border border-slate-300 text-slate-300 px-2 py-1 rounded hover:bg-slate-700 focus-within:bg-slate-700 outline-none"
-                  >
-                    Cancel
-                  </Link>
-
-                  <button
-                    type="submit"
-                    className="border border-slate-300 text-slate-300 px-2 py-1 rounded hover:bg-slate-700 focus-within:bg-slate-700 outline-none"
-                  >
-                    Create
-                  </button>
+            <div className="bg-white sm:p-6 sm:pb-4">
+              <form className="">
+                <div className="static">
+                  <input
+                    type="text"
+                    name="addTask"
+                    id="addTask"
+                    className="block w-full rounded-md border-2 py-2 pl-4 pr-20 text-gray-900 placeholder:text-gray-400 focus:outline-indigo-600 sm:text-xs sm:leading-6"
+                    placeholder="Add a task"
+                  />
+                  <div className="flex items-center">
+                    <button
+                      id="sendTask"
+                      name="sendTask"
+                      className="h-full absolute right-8 bottom-0 top-1 rounded-md border-0 bg-transparent  text-gray-300 hover:text-indigo-600 sm:text-sm"
+                    >
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        strokeWidth={1.5}
+                        stroke="currentColor"
+                        className="w-6 h-6"
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          d="M12.75 15l3-3m0 0l-3-3m3 3h-7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+                        />
+                      </svg>
+                    </button>
+                  </div>
                 </div>
               </form>
             </div>
