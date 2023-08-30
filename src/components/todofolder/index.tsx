@@ -2,17 +2,9 @@ import Link from "next/link";
 import React from "react";
 import { prisma } from "@/db";
 import TodoItem from "../todoitem";
-
-// async function createTodo(data: FormData) {
-//   "use server";
-
-//   const title = data.get("title")?.valueOf();
-//   if (typeof title !== "string" || title.length === 0) {
-//     throw new Error("Invalid Title");
-//   }
-
-//   await prisma.todo.create({ data: { title, complete: false } });
-// }
+import createTodo from "@/utilities/createTodo";
+import { useState } from "react";
+import { create } from "domain";
 
 interface ModalProps {
   modal: {
@@ -20,8 +12,28 @@ interface ModalProps {
   };
 }
 
+const defaultFormData = {
+  addTask: "",
+};
+
 const TodoForm: React.FC<ModalProps> = ({ modal }) => {
   if (!modal.open) return null;
+
+  const [formData, setFormData] = useState(defaultFormData);
+  const { addTask } = formData;
+
+  const onChange = (e: any) => {
+    setFormData((prevState) => ({
+      ...prevState,
+      [e.target.id]: e.target.value,
+    }));
+  };
+
+  const onSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    console.log(addTask);
+    createTodo(addTask);
+  };
 
   return (
     <div
@@ -45,12 +57,13 @@ const TodoForm: React.FC<ModalProps> = ({ modal }) => {
 
           <div className="relative transform overflow-hidden rounded-lg bg-white text-left shadow-xl transition-all sm:my-8 sm:w-full sm:max-w-lg">
             <div className="bg-white sm:p-6 sm:pb-4">
-              <form className="">
+              <form onSubmit={onSubmit} className="">
                 <div className="static">
                   <input
                     type="text"
-                    name="addTask"
+                    value={addTask}
                     id="addTask"
+                    onChange={(e) => onChange(e)}
                     className="block w-full rounded-md border-2 py-2 pl-4 pr-20 text-gray-900 placeholder:text-gray-400 focus:outline-indigo-600 sm:text-xs sm:leading-6"
                     placeholder="Add a task"
                   />

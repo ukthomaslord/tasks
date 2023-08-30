@@ -1,6 +1,7 @@
 "use client";
 
 import React from "react";
+import deleteTodo from "@/utilities/deletetodo";
 
 type TodoItemProps = {
   id: string;
@@ -38,7 +39,7 @@ export function TodoItem({ id, title, complete, toggleTodo }: TodoItemProps) {
                 />
               </svg>
             </button>
-            <button className="">
+            <button onClick={(e: any) => deleteTodo(id)} className="">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 fill="none"
