@@ -17,13 +17,15 @@ export default async function Todo() {
   const todos = await getTodos();
 
   return (
-    <div className="max-w-md mx-auto bg-white rounded-xl shadow-md overflow-hidden md:max-w-2xl">
-      <ul className="pl-4">
-        {todos.map((todo) => (
-          <TodoItem key={todo.id} {...todo} toggleTodo={toggleTodo} />
-        ))}
-      </ul>
-      <AddTodoButton />
+    <div className="">
+      <div className="max-w-md mx-auto bg-white rounded-xl shadow-md overflow-hidden md:max-w-2xl">
+        <ul className="">
+          {todos.map((todo) => (
+            <TodoItem key={todo.id} {...todo} toggleTodo={toggleTodo} />
+          ))}
+        </ul>
+        <AddTodoButton />
+      </div>
     </div>
   );
 }
